@@ -79,9 +79,9 @@ with st.sidebar:
 def load_data():
     df = pd.read_csv('top17crimes_9col.csv')
     df['start_datetime_of_event'] = pd.to_datetime(df['start_datetime_of_event'])
-    df_fel_misd = df.loc[(df['offense_level'] == 'FELONY') | (df['offense_level'] == 'MISDEMEANOR')].copy()
-    twenty_crimes = df_fel_misd['description'].value_counts().head(17).index.to_list()
-    top_twenty = df_fel_misd.loc[df['description'].isin(twenty_crimes)].copy()
+    #df_fel_misd = df.loc[(df['offense_level'] == 'FELONY') | (df['offense_level'] == 'MISDEMEANOR')].copy()
+    #twenty_crimes = df_fel_misd['description'].value_counts().head(17).index.to_list()
+    top_twenty = df #df_fel_misd.loc[df['description'].isin(twenty_crimes)].copy()
     return top_twenty
 
 top_twenty = load_data()#.head(1)

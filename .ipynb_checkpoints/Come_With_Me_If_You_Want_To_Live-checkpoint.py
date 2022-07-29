@@ -150,13 +150,13 @@ if input_date < pd.Timestamp("2021-12-31 23:59:59"):
         return h_crime_count
     h_crime_count = find_h_date(input_date)
     if h_crime_count == 1:
-        st.subheader(f'For the given demographics, we have a record of {h_crime_count} crime to happen on {input_date} in the boro of {input_boro}.')
+        st.subheader(f'For the given demographics, we have a record of {h_crime_count} crime to happen on {input_date} in the borough of {input_boro}.')
     else:
-        st.subheader(f'For the given demographics, we have a record of {h_crime_count} crimes to happen on {input_date} in the boro of {input_boro}.')
+        st.subheader(f'For the given demographics, we have a record of {h_crime_count} crimes to happen on {input_date} in the borough of {input_boro}.')
 elif input_date > pd.Timestamp("2021-12-31 23:59:59"):
     def find_f_date(input_date):
         input_date = pd.to_datetime(input_date)
         f_crime_count = forecast.loc[forecast['ds'] == input_date]['yhat'].values[0]
         return f_crime_count
     f_crime_count = find_f_date(input_date)
-    st.subheader(f'For the given demographics, we forecast {f_crime_count} crimes to happen on {input_date} in the boro of {input_boro}.')
+    st.subheader(f'For the given demographics, we forecast {f_crime_count} crimes to happen on {input_date} in the borough of {input_boro}.')

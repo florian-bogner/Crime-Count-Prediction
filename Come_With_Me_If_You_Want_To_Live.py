@@ -95,8 +95,7 @@ s = buffer.getvalue()
 def df_slicer(boro,
               age,
               gender,
-              ethn#,
-              #crime
+              ethn
              ):
     slice_ = top_twenty.loc[
         (top_twenty['boro'] == boro) &

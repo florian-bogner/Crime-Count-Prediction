@@ -11,7 +11,7 @@ from prophet import Prophet
 
 with st.sidebar:
     input_boro = st.selectbox(
-         'Select NYC borough',
+         'Select NYC borough:',
          ('Manhattan',
           'Bronx',
           'Queens',

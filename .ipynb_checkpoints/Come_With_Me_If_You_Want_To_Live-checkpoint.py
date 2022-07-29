@@ -84,7 +84,8 @@ def load_data():
     top_twenty = df #df_fel_misd.loc[df['description'].isin(twenty_crimes)].copy()
     return top_twenty
 
-top_twenty = load_data()#.head(1)
+top_twenty = load_data()
+st.dataframe(top_twenty.head(1))
 
 buffer = io.StringIO()
 top_twenty.info(buf=buffer)

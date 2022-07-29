@@ -75,6 +75,11 @@ with st.sidebar:
 
 ##########################################################################################
 
+url='https://drive.google.com/file/d/16zQFS6M0aooYCMjzq0qfqIipTd8KLbO_/view?usp=sharing'
+url='https://drive.google.com/uc?id=' + url.split('/')[-2]
+df = pd.read_csv(url)
+st.dataframe(df.head(1))
+
 @st.cache
 def load_data():
     url='https://drive.google.com/file/d/16zQFS6M0aooYCMjzq0qfqIipTd8KLbO_/view?usp=sharing'

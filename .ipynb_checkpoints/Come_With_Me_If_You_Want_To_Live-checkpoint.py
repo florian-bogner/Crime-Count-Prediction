@@ -107,19 +107,7 @@ def df_slicer(boro,
         (top_twenty['victim_sex'] == gender) &
         (top_twenty['victim_race'] == ethn)
     ]
-    slice_ = slice_.drop(columns = [
-        'description',
-        'boro',
-        'lat',
-        'lon',
-        'victim_age',
-        'victim_race',
-        'victim_sex'
-                                   ]
-                        )
-    
-    'id', 'start_datetime_of_event', 'description', 'boro', 'lat', 'lon',
-       'victim_age', 'victim_race', 'victim_sex'
+    slice_ = slice_.drop(columns = ['description', 'boro', 'lat', 'lon', 'victim_age', 'victim_race', 'victim_sex'])
     
     slice_['ymd'] = (
     slice_['start_datetime_of_event'].dt.strftime('%Y') + "-" +

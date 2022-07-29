@@ -75,9 +75,9 @@ with st.sidebar:
 
 ##########################################################################################
 
-url='https://drive.google.com/file/d/16zQFS6M0aooYCMjzq0qfqIipTd8KLbO_/view?usp=sharing'
+url = 'https://drive.google.com/file/d/16zQFS6M0aooYCMjzq0qfqIipTd8KLbO_/view?usp=sharing'
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-df = pd.read_csv(url)
+df = pd.read_csv(path)
 st.dataframe(df.head(1))
 
 @st.cache

@@ -154,7 +154,7 @@ if input_date < pd.Timestamp("2021-12-31 23:59:59"):
         st.markdown("## There were no crimes reported on that day")
 elif input_date > pd.Timestamp("2021-12-31 23:59:59"):
     input_date = pd.to_datetime(input_date)
-    f_crime_count = round(forecast.loc[forecast['ds'] == input_date]['yhat'].values[0])
+    f_crime_count = round(forecast.loc[forecast['ds'] == input_date]['yhat'].values[0], 2)
     st.markdown("## There are {} crimes forecast on that day against individuals with the selected demographics".format(f_crime_count))
     
     

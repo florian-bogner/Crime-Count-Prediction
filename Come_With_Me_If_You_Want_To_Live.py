@@ -77,13 +77,11 @@ with st.sidebar:
 
 @st.cache
 def load_data():
-    url='https://drive.google.com/file/d/16zQFS6M0aooYCMjzq0qfqIipTd8KLbO_/view?usp=sharing'
-    url='https://drive.google.com/uc?id=' + url.split('/')[-2]
-    df = pd.read_csv(url)
+    df = pd.read_csv('top17crimes_9col.csv')
     df['start_datetime_of_event'] = pd.to_datetime(df['start_datetime_of_event'])
-    #df_fel_misd = df.loc[(df['offense_level'] == 'FELONY') | (df['offense_level'] == 'MISDEMEANOR')].copy()
-    #twenty_crimes = df_fel_misd['description'].value_counts().head(17).index.to_list()
-    top_twenty = df
+    df_fel_misd = df.loc[(df['offense_level'] == 'FELONY') | (df['offense_level'] == 'MISDEMEANOR')].copy()
+    twenty_crimes = df_fel_misd['description'].value_counts().head(17).index.to_list()
+    top_twenty = df_fel_misd.loc[df['description'].isin(twenty_crimes)].copy()
     return top_twenty
 
 top_twenty = load_data()#.head(1)

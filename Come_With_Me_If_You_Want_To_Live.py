@@ -149,7 +149,7 @@ if input_date < pd.Timestamp("2021-12-31 23:59:59"):
         if h_crime_count== 1:
             st.markdown("## There was 1 crime reported on that day against individual with the selected demographics.")
         else:
-            st.markdown("## There were {} crimes reported on that day against individuals with the selected demographics".format(h_crime_count))
+            st.markdown("## There were {} crimes reported on that day against individuals with the selected demographics.".format(h_crime_count))
     except:
         st.markdown("## There were no crimes reported on that day.")
 elif input_date > pd.Timestamp("2021-12-31 23:59:59"):

@@ -84,7 +84,6 @@ def load_data():
     return top_twenty
 
 top_twenty = load_data()
-st.dataframe(top_twenty.head(1))
 
 buffer = io.StringIO()
 top_twenty.info(buf=buffer)

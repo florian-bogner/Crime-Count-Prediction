@@ -6,7 +6,7 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import datetime
 import io
 
-#from prophet import Prophet
+from prophet import Prophet
 
 ##########################################################################################
 

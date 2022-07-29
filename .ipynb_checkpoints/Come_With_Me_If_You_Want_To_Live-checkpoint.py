@@ -166,7 +166,7 @@ forecast = tsa(df_slicer(boro, age, gender, ethn))
     
     
     
-if date <= datetime.date(2021, 12, 31):
+if input_date < pd.Timestamp("2021-12-31 23:59:59"):
     try:
         input_date = input_date.strftime("%Y-%m-%d")
         h_crime_count = slice_ymd.loc[slice_ymd['ds'] == input_date]['y'].values[0]

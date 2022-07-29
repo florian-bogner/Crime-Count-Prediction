@@ -75,11 +75,6 @@ with st.sidebar:
 
 ##########################################################################################
 
-
-path ='https://doc-00-84-docs.googleusercontent.com/docs/securesc/70aevsj5sil9v9ff8gpilca9khj40bbu/grf10j1dm244mug2pt14cb2mvscvghdo/1659103500000/18337112124290509810/18337112124290509810/16zQFS6M0aooYCMjzq0qfqIipTd8KLbO_?e=download&ax=ACxEAsbUY0GaPHFNrhkKx0Ov_vq2CooFLxEop6ulQY195NjqCbXM0ifHF2UXWb-nEZEWJ9_O4cVJ10Pgbqy8f3_fxuzna1rLnWZ8ouN37IYYuMhtzRzai7TJBVqx729giv9RsVfpYTtDNge5CpHwERYrT89kpRqWHhghmmBrshE7FciBsAcZQEAJllVdENJ7c3AxVY6EYHiOdryavcg8OtAhalLzn_RQqzUl6a5ubWIiQCkc3t5KUgrBEobJuCh8QLmPvCqOXLuPXCRZlFtxB3pe_KCT5CB2jKDIonL9zJ4_iZPmjKOhO14PIdmPHbVNJiEtIvPb-s4zPTw4NUixXCejR2qps_YVZv06Y9CYLIP3lm_Atmks9wfFUUkbZAPDTeCxmy0q0jJPHCylwA2EXq5hJ0WcoD_sEaUNVJM0w0RtvjG909jGWyCRcpPWWT-_pB2m1AH0WXIyRAfqU7W07qf7ZraJdFDJb4_g4TOKJmcd9A6QqUAzIkyul0A9yf6LLCEDeQCYo-tGQUIfQM5-hL9Y-0jgiF0r6abiQrYsYiQaJwKqFe_YiIpaeXtCklhz-9Bt3LdFbG1kvQ-6rdu2s4NL8tYPNXyjdz1qjIrfL_IcMzHrRbQlWN0v099BCkJdmQ7J68r3uytBebCfZrG96hq7p92FT47KVYCRngyqywu1VIsVztX9ctnYiueX1r-wjqi5zu_IFH-_UnkhXQ&uuid=33ef730f-14e4-449e-96b6-a1ef1e6e79f9&authuser=0&nonce=2f2au97efa5pg&user=18337112124290509810&hash=a2so9vsm7j5asr9qnt56fairotij08gd'
-df = pd.read_csv(path)
-st.dataframe(df.head(1))
-
 @st.cache
 def load_data():
     url='https://drive.google.com/file/d/16zQFS6M0aooYCMjzq0qfqIipTd8KLbO_/view?usp=sharing'

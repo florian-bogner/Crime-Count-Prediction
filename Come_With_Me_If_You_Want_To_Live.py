@@ -81,9 +81,9 @@ def load_data():
     url='https://drive.google.com/uc?id=' + url.split('/')[-2]
     df = pd.read_csv(url)
     df['start_datetime_of_event'] = pd.to_datetime(df['start_datetime_of_event'])
-    df_fel_misd = df.loc[(df['offense_level'] == 'FELONY') | (df['offense_level'] == 'MISDEMEANOR')].copy()
-    twenty_crimes = df_fel_misd['description'].value_counts().head(17).index.to_list()
-    top_twenty = df_fel_misd.loc[df['description'].isin(twenty_crimes)].copy()
+    #df_fel_misd = df.loc[(df['offense_level'] == 'FELONY') | (df['offense_level'] == 'MISDEMEANOR')].copy()
+    #twenty_crimes = df_fel_misd['description'].value_counts().head(17).index.to_list()
+    top_twenty = df
     return top_twenty
 
 top_twenty = load_data()#.head(1)
@@ -107,20 +107,21 @@ def df_slicer(boro,
         (top_twenty['victim_sex'] == gender) &
         (top_twenty['victim_race'] == ethn)
     ]
-    slice_ = slice_.drop(columns = ['precinct',
-                                    'date_police_report',
-                                    'description',
-                                    'police_description',
-                                    'offense_level',
-                                    'boro',
-                                    'location_type',
-                                    'juris_description',
-                                    'lat',
-                                    'lon',
-                                    'trans_station_name',
-                                    'victim_age',
-                                    'victim_race',
-                                    'victim_sex'
+    slice_ = slice_.drop(columns = [
+        'precinct',
+        'date_police_report',
+        'description',
+        'police_description',
+        'offense_level',
+        'boro',
+        'location_type',
+        'juris_description',
+        'lat',
+        'lon',
+        'trans_station_name',
+        'victim_age',
+        'victim_race',
+        'victim_sex'
                                    ]
                         )
     

@@ -142,20 +142,41 @@ forecast = tsa(df_slicer(boro, age, gender, ethn))
 
 ##########################################################################################
 
-if input_date < pd.Timestamp("2021-12-31 23:59:59"):
-    def find_h_date(input_date):
+#if input_date < pd.Timestamp("2021-12-31 23:59:59"):
+#    def find_h_date(input_date):
+#        input_date = input_date.strftime("%Y-%m-%d")
+#        h_crime_count = slice_ymd.loc[slice_ymd['ds'] == input_date]['y'].values[0]
+#        return h_crime_count
+#    h_crime_count = find_h_date(input_date)
+#    if h_crime_count == 1:
+#        st.subheader(f'For the given demographics, we have a record of {h_crime_count} crime to happen on {input_date} in the borough of {input_boro}.')
+#    else:
+#        st.subheader(f'For the given demographics, we have a record of {h_crime_count} crimes to happen on {input_date} in the borough of {input_boro}.')
+#elif input_date > pd.Timestamp("2021-12-31 23:59:59"):
+#    def find_f_date(input_date):
+#        input_date = pd.to_datetime(input_date)
+#        f_crime_count = forecast.loc[forecast['ds'] == input_date]['yhat'].values[0]
+#        return f_crime_count
+#    f_crime_count = find_f_date(input_date)
+#    st.subheader(f'For the given demographics, we forecast {f_crime_count} crimes to happen on {input_date} in the borough of {input_boro}.')
+
+    
+    
+    
+    
+    
+    
+if date <= datetime.date(2021, 12, 31):
+    try:
         input_date = input_date.strftime("%Y-%m-%d")
         h_crime_count = slice_ymd.loc[slice_ymd['ds'] == input_date]['y'].values[0]
-        return h_crime_count
-    h_crime_count = find_h_date(input_date)
-    if h_crime_count == 1:
-        st.subheader(f'For the given demographics, we have a record of {h_crime_count} crime to happen on {input_date} in the borough of {input_boro}.')
-    else:
-        st.subheader(f'For the given demographics, we have a record of {h_crime_count} crimes to happen on {input_date} in the borough of {input_boro}.')
+        if h_crime_count== 1:
+            st.markdown("## There was 1 crime reported on that day against individual with the selected demographics")
+        else:
+            st.markdown("## There were {} crimes reported on that day against individuals with the selected demographics".format(h_crime_count))
+    except:
+        st.markdown("## There were no crimes reported on that day")
 elif input_date > pd.Timestamp("2021-12-31 23:59:59"):
-    def find_f_date(input_date):
-        input_date = pd.to_datetime(input_date)
-        f_crime_count = forecast.loc[forecast['ds'] == input_date]['yhat'].values[0]
-        return f_crime_count
-    f_crime_count = find_f_date(input_date)
+    input_date = pd.to_datetime(input_date)
+    f_crime_count = forecast.loc[forecast['ds'] == input_date]['yhat'].values[0]
     st.subheader(f'For the given demographics, we forecast {f_crime_count} crimes to happen on {input_date} in the borough of {input_boro}.')

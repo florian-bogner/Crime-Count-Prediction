@@ -11,7 +11,7 @@ from prophet import Prophet
 
 with st.sidebar:
     input_boro = st.selectbox(
-         'For which NYC boro should a forecast be made?',
+         'Select NYC borough',
          ('Manhattan',
           'Bronx',
           'Queens',
@@ -30,7 +30,7 @@ with st.sidebar:
         boro = 'STATEN ISLAND'
     
     age = st.selectbox(
-         'For which age range should a forecast be made?',
+         'Select age group:',
          ('<18',
           '18-24',
           '25-44',
@@ -38,7 +38,7 @@ with st.sidebar:
           '65+'))
     
     input_gender = st.selectbox(
-         'For which gender should a forecast be made?',
+         'Select sex:',
          ('Female',
           'Male'))
     
@@ -48,7 +48,7 @@ with st.sidebar:
         gender = 'M'
 
     input_ethn = st.selectbox(
-         'For which ethnicity should a forecast be made?',
+         'Select ethnicity:',
          ('Black',
           'White',
           'White Hispanic',
@@ -68,7 +68,7 @@ with st.sidebar:
         ethn = 'AMERICAN INDIAN/ALASKAN NATIVE'
     
     input_date = st.date_input(
-        "In which date are you interested in?",
+        "Select date:",
         min_value = datetime.date(2006, 1, 1),
         max_value = datetime.date(2023, 12, 31))
 

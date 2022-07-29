@@ -16,7 +16,7 @@ with st.sidebar:
           'Bronx',
           'Queens',
           'Brooklyn',
-          'Staten Island'))
+          'Staten Island'), index = 0)
     
     if input_boro == 'Manhattan':
         boro = 'MANHATTAN'
@@ -141,6 +141,9 @@ def tsa(df):
 forecast = tsa(df_slicer(boro, age, gender, ethn))
 
 ##########################################################################################
+
+
+
 
 if input_date < pd.Timestamp("2021-12-31 23:59:59"):
     try:

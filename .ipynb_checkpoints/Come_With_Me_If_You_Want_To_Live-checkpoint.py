@@ -78,6 +78,7 @@ with st.sidebar:
 def load_data():
     df = pd.read_csv('top17crimes_9col.csv')
     df['start_datetime_of_event'] = pd.to_datetime(df['start_datetime_of_event'])
+    df = df.loc[~df['lat'].isna()]
     #df_fel_misd = df.loc[(df['offense_level'] == 'FELONY') | (df['offense_level'] == 'MISDEMEANOR')].copy()
     #twenty_crimes = df_fel_misd['description'].value_counts().head(17).index.to_list()
     top_twenty = df #df_fel_misd.loc[df['description'].isin(twenty_crimes)].copy()
@@ -85,9 +86,9 @@ def load_data():
 
 top_twenty = load_data()
 
-buffer = io.StringIO()
-top_twenty.info(buf=buffer)
-s = buffer.getvalue()
+#buffer = io.StringIO()
+#top_twenty.info(buf=buffer)
+#s = buffer.getvalue()
 #st.text(s)
 
 ##########################################################################################
@@ -103,7 +104,7 @@ def df_slicer(boro,
         (top_twenty['victim_sex'] == gender) &
         (top_twenty['victim_race'] == ethn)
     ]
-    slice_ = slice_.drop(columns = ['description', 'boro', 'lat', 'lon', 'victim_age', 'victim_race', 'victim_sex'])
+    slice_ = slice_.drop(columns = ['description', 'boro', 'victim_age', 'victim_race', 'victim_sex'])
     
     slice_['ymd'] = (
     slice_['start_datetime_of_event'].dt.strftime('%Y') + "-" +
@@ -120,12 +121,12 @@ def df_slicer(boro,
     )
     slice_ymd = slice_ymd.reindex(columns={'id', 'ymd'})
     slice_ymd = slice_ymd.rename(columns={'id' :'y', 'ymd': 'ds'})
-    return slice_ymd
+    return slice_, slice_ymd
 
-slice_ymd = df_slicer(boro, age, gender, ethn)
+slice_, slice_ymd = df_slicer(boro, age, gender, ethn)
 
 #buffer = io.StringIO()
-#slice_ymd.info(buf=buffer)
+#slice_.info(buf=buffer)
 #s = buffer.getvalue()
 #st.text(s)
 
@@ -138,12 +139,9 @@ def tsa(df):
     forecast = m.predict(future)
     return forecast
 
-forecast = tsa(df_slicer(boro, age, gender, ethn))
+forecast = tsa(slice_ymd)
 
 ##########################################################################################
-
-
-
 
 if input_date < pd.Timestamp("2021-12-31 23:59:59"):
     try:
@@ -160,7 +158,7 @@ elif input_date > pd.Timestamp("2021-12-31 23:59:59"):
     f_crime_count = round(forecast.loc[forecast['ds'] == input_date]['yhat'].values[0], 2)
     st.markdown("## There are {} crimes forecast on that day against individuals with the selected demographics.".format(f_crime_count))
     
+########################################################################################## 
     
-    
-    
+st.map(slice_[['lat', 'lon']])
     
